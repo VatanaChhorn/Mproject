@@ -13,14 +13,15 @@ int main()
 {
     int search; int check; 
     int n; int index[10] = {0}; 
-    printf("Please enter the number of index less or equal to 10. \n"); 
+    printf("\t\t\tTRANSACTION CLEARER \n\n"); 
+    printf("Please enter the number of the index less or equal to 10. \n"); 
     scanf("%d", &n); 
-    printf("Please input the value of index: "); 
+    printf("Please input the value of the index ( separate each value with entering key ):\n"); 
     for ( int i = 0; i < n ; i++)
     scanf("%d", &index[i]);
     printf("Please input the value you want to search: "); 
     scanf("%d", &search); 
-    printf("Start searching... \n"); 
+    printf("\nStart searching...\n"); 
     check = cond1(search, index, n); 
     if ( check == 0 )  check = cond2(search, index, n); 
     if ( check == 0 )  check = cond3(search, index, n);
@@ -46,9 +47,9 @@ int cond1(int search, int index[], int n)
     }
     if ( sum == search ) 
     {
-        printf("All the deta is corresponding sum and the data have such as : "); 
+        printf("All the deta is corresponding sum and the data have such as: "); 
         for ( int i = 0; i < n ; i++ )
-        printf(" %d ", index[i]); 
+        printf(" %d, ", index[i]); 
         check = 1; 
         sum = 0; 
     }
@@ -57,7 +58,7 @@ int cond1(int search, int index[], int n)
         {
             if ( ( index[i] + index[j] ) == search )
             {
-                printf("The data is in index %d and %d which has the value : %d , %d.\n", i, j , index[i], index[j]); 
+                printf("\nThe data is in index %d and %d which has the value : %d , %d.\n", i, j , index[i], index[j]); 
                 check = 1; 
             }
         }
