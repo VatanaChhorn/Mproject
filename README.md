@@ -1,4 +1,4 @@
 # Mproject
 I did this project for one of my Thai friends to assist with his business. It could help you to clear the transaction when you have ten transactions, and the client gives you an amount of money without specifying which transition he/she wants to clear. Hence, initially, you can put the number of transactions and start to input the value of each transaction in the form of integer, then input the amount that your client has given you. The machine will be calculated and choose the best possibility that you could clear the transaction for you. It's not very good, i'm just a fr4sh man in university. I used all the knowledge I have acquire in my one semester to did this project.  PS: it was my first project as well.
 
-You can surely test it via this link : https://Boms-project-2.vatanachhorn.repl.run
+You can surely test it via this link : https://boms-project-2.vatanachhorn.repl.run
