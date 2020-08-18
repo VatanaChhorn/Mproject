@@ -3,7 +3,7 @@
 ### Overview 
 <p>I did this project for one of my Thai friends to assist with his business. <br> It could help you to clear the transaction when you have ten transactions, and the client gives you an amount of money without specifying which transition he/she wants to clear. <br> Hence, initially, you can put the number of transactions and start to input the value of each transaction in the form of integer, then input the amount that your client has given you. <br> The machine will be calculated and choose the best possibility that you could clear the transaction for you. <br> It's not very good, i'm just a fr4sh man in university. I used all the knowledge I have acquire in my one semester to did this project.  </p>
 
-### Contributor 
+### Contributors 
 
 ⭐️ [AingHongSin](https://github.com/AingHongSin)
 
