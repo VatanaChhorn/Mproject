@@ -11,9 +11,11 @@ class Mproject():
 
         self.window = tk.Tk()
         self.window.title('TRANSACTION CLEARER')
-        self.window.geometry('500x600+500+300')
+        self.window.geometry('400x545+600+300')
+        self.window.iconbitmap(" /Users/macbook/Documents/Project/Mproject-master/img_106487.ico")
         self.window.config(background = '#FFFAF0')
-        #self.window.resizable(False, False)
+        self.window.resizable(False, False)
+
 
         self.entries = []
         self.item = []
@@ -22,19 +24,18 @@ class Mproject():
         self.check = False
         self.searchVar = float(0)
 
-        #self.addbtnVar = tk.BooleanVar()
-        #self.delbtnVar = tk.BooleanVar()
         self.Amount_Slot = 1
 
         # Frame
         self.topFrame = tk.Frame(self.window)
         self.topFrame.pack(fill = 'x')
+        self.topFrame.config(background = '#FFFAF0')
 
         ###################################################-----Main Frame & SCROLLBAR IN MAIN FRAME-----###################################################
-        self.mainFrame = tk.Frame(self.window, width = 100, height = 350)
+        self.mainFrame = tk.Frame(self.window)
         self.mainFrame.pack(fill = 'x')
 
-        self.myframe = tk.Frame(self.mainFrame, width = 100, height = 350, bd = 1)
+        self.myframe = tk.Frame(self.mainFrame, bd = 1)
         self.myframe.pack(fill = 'x')
 
         self.canvas = tk.Canvas(self.myframe)
@@ -50,12 +51,13 @@ class Mproject():
 
         self.search_Frame = tk.Frame(self.window)
         self.search_Frame.pack( pady = '10')
+        self.search_Frame.config(background = '#FFFAF0')
 
         ###################################################-----result Frame & SCROLLBAR IN result FRAME-----###################################################
-        self.resultFrame = tk.Frame(self.window, width = 100, height = 350)
+        self.resultFrame = tk.Frame(self.window)
         self.resultFrame.pack(fill = 'x')
 
-        self.myrResultframe = tk.Frame(self.resultFrame, width = 100, height = 350, bd=1)
+        self.myrResultframe = tk.Frame(self.resultFrame, bd=1)
         self.myrResultframe.pack(fill = 'x')
 
         self.canvas1 = tk.Canvas(self.myrResultframe)
@@ -73,7 +75,7 @@ class Mproject():
         self.bottomFrame.pack( side = 'bottom')
         self.bottomFrame.config(background = '#FFFAF0')
 
-        self.lblTitle = tk.Label(self.topFrame, text = 'TRANSACTION CLEARER', font = ('defule',30,'bold'))
+        self.lblTitle = tk.Label(self.topFrame, text = 'TRANSACTION CLEARER', font = ('defule',30,'bold'), bg = '#FFFAF0')
         self.lblTitle.pack()
 
         self.lblsearch = tk.Label(self.search_Frame, text = 'Search', bg = '#FFFAF0', textvariable = self.searchVar)
@@ -86,7 +88,6 @@ class Mproject():
         self.AddSlot_Feature()
 
         self.btnAdd = tk.Button(self.bottomFrame, text = 'Add', command = self.AddSlot_Feature, width = '10', height = '2')
-        #self.btnAdd.bind("<Button-1>", self.AddSlot_Feature)
         self.btnAdd.pack(side = 'right')
 
         self.btnDelete = tk.Button(self.bottomFrame, text = 'Reset', command = self.delSlot_Feature, width = '10', height = '2')
@@ -120,8 +121,7 @@ class Mproject():
         
         print(self.Amount_Slot)  
 
-
-        if self.Amount_Slot < 20:
+        if self.Amount_Slot < 15:
             self.Amount_Slot += 1   
 
             for i in range(self.Amount_Slot):
@@ -131,10 +131,10 @@ class Mproject():
 
                 self.inputName = tk.Entry(self.frame, width = '20')
                 self.inputName.grid(row = i, column = 1)
+                self.inputName.focus()
 
                 self.entries.append(self.inputName)
 
-        
         print(self.Amount_Slot) 
 # Reset Interface
     def delSlot_Feature(self):
@@ -158,21 +158,23 @@ class Mproject():
             print(self.item[i])
 
 
+        self.lblTotlaAmount = tk.Label(self.Result_frame, text = (f"Total Amount: {sum(self.item)}"))
+        self.lblTotlaAmount.pack()
+
         if self.inpSearch.get() != '':
             self.searchVar = float(self.inpSearch.get())
+            self.condition()
         else:
             tk.messagebox.showwarning("Warning", 'Please enter Number in Search slot')
         
             
-        self.lblTotlaAmount = tk.Label(self.Result_frame, text = (f"Total Amount: {sum(self.item)}"))
-        self.lblTotlaAmount.pack()
         
         
-        self.condition()
+        
         
 
         if self.check == False:
-            self.lblNoRE = tk.Message(self.Result_frame, text = 'No data was found! ', width = 450)
+            self.lblNoRE = tk.Message(self.Result_frame, text = 'No data was found! ', width = 540)
             self.lblNoRE.pack()
 
 
@@ -181,13 +183,21 @@ class Mproject():
         self.searchVar = 0
         self.check = False
 
-
-
     def condition(self):
+
+        self.mesDisplayUpper = tk.Message(self.Result_frame, text = (f"All the data is corresponding sum and the data have :"), width = 540, justify = 'left')
+        self.mesDisplayUpper.pack()
+
+        if sum(self.item) == self.searchVar:
+            self.mesTotal = tk.Message(self.Result_frame, text = (f"Sum of all slots equal to the search amount"), width = 540, justify = 'left')
+            self.mesTotal.pack()
+            self.check = True
+
+
         for a in range(len((self.item))):
             for b in itertools.combinations(self.item, a):
                 if int(sum(b)) == int(self.searchVar):
-                    self.mesDisplay = tk.Message(self.Result_frame, text = (f"{a} slot. Wich has {b}"), width = 450, justify = 'left')
+                    self.mesDisplay = tk.Message(self.Result_frame, text = (f"Which has {b}"), width = 540, justify = 'left')
                     self.mesDisplay.pack()
                     self.check = True
 
