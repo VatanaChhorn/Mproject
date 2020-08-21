@@ -123,6 +123,7 @@ venv.bak/
 # mkdocs documentation
 /site
 .Ds_Store
+Icon?
 # mypy
 .mypy_cache/
 .dmypy.json
