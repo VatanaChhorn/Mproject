@@ -1,9 +1,9 @@
 from setuptools import setup
 
-APP = ['main.py']
+APP = ['RANSACTION_CLEARER.py']
 DATA_FILES = []
 OPTIONS = {
- 'iconfile':'img_106487.ico',
+ 'iconfile':'logo.icns',
  'argv_emulation': True,
  'packages': ['certifi'],
 }
